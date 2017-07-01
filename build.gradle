@@ -33,18 +33,19 @@ jar {
 /**
  * Reuses the Ant signjar task to sign the target jar
  */
-task signjar(dependsOn: jar)  {
-    doLast {
-        ant.signjar(keystore: "$sigKeystore",
-                storepass: "$sigKsPasswd",
-                jar: "${buildDir}/libs/${project.name}.jar",
-                alias: "$sigKeyAlias",
-                keypass: "$sigKeyPassword",
-                verbose: "true")
-    }
-}
+//task signjar(dependsOn: jar)  {
+//    doLast {
+//        ant.signjar(keystore: "$sigKeystore",
+//                storepass: "$sigKsPasswd",
+//                jar: "${buildDir}/libs/${project.name}.jar",
+//                alias: "$sigKeyAlias",
+//                keypass: "$sigKeyPassword",
+//                verbose: "true")
+//    }
+//}
 
-
+//
+//assemble.dependsOn(signjar)
 
 
 compileJava {
@@ -67,4 +68,3 @@ dependencies {
     //testCompile 'junit:junit:4.12'
 }
 
-assemble.dependsOn(signjar)
