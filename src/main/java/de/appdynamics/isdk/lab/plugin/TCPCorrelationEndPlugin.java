@@ -16,11 +16,9 @@ import java.util.List;
  */
 public class TCPCorrelationEndPlugin extends AEntry {
 
-
-    public TCPCorrelationEndPlugin
     private final IReflector _getHeader;
 
-    {
+    public TCPCorrelationEndPlugin() {
         _getHeader = getNewReflectionBuilder().invokeInstanceMethod("getCorrelation",false).build();
 
     }
@@ -29,9 +27,13 @@ public class TCPCorrelationEndPlugin extends AEntry {
     @Override
     public String unmarshalTransactionContext(Object invokedObject, String className, String methodName, Object[] paramValues, ISDKUserContext context) throws ReflectorException {
 
-        getLogger().info("Start Correlation : ");
+        getLogger().info("Start Correlation : " + ArrayTool.logValues(paramValues));
+        String header = ""+_getHeader.execute(paramValues[0].getClass().getClassLoader(),paramValues[0]);
 
-        return null;
+        getLogger().info("Found HEader "+header);
+
+
+        return header;
     }
 
     @Override
