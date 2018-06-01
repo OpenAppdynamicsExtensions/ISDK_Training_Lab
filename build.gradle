@@ -7,16 +7,10 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 
+// Enable this to use build repository
 //    maven {
-//        url "https://raw.github.com/Appdynamics/artifact-library/master/repo/"
+//        url("https://nexus.corp.appdynamics.com/nexus/content/repositories/releases")
 //    }
-//    maven {
-//        url "file:///vlab/maven/private-artifact-library/repo/"
-//    }
-
-    maven {
-        url("https://nexus.corp.appdynamics.com/nexus/content/repositories/releases")
-    }
 }
 
 
@@ -44,8 +38,8 @@ jar {
 //    }
 //}
 
-//
-//assemble.dependsOn(signjar)
+
+assemble.dependsOn(signjar)
 
 
 compileJava {
@@ -59,7 +53,9 @@ dependencies {
     // The production code uses the SLF4J logging API at compile time
     //compile 'org.slf4j:slf4j-api:1.7.21'
 
-    compileOnly   group: 'com.appdynamics.agent', name: 'instrumentation-sdk', version: '4.3.3'
+    // Choose to use online Rep OR a local copy of the agent.jar
+    // compileOnly   group: 'com.appdynamics.agent', name: 'instrumentation-sdk', version: '4.3.3'
+    compileOnly files('libs/javaagent.jar')
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the

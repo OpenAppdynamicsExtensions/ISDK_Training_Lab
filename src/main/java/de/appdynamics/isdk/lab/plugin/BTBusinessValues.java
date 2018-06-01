@@ -24,7 +24,7 @@ public class BTBusinessValues extends ADataCollector {
 
         getLogger().info(AgentDelegate.getTransactionDemarcator().getUniqueIdentifierForTransaction());
 
-       getLogger().info(ArrayTool.logValues(paramValues));
+        getLogger().info(ArrayTool.logValues(paramValues));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class BTBusinessValues extends ADataCollector {
 
     @Override
     public boolean addToAnalytics() {
-        return false;
+        return true;
     }
 
     @Override

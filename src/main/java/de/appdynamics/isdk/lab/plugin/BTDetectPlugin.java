@@ -1,5 +1,6 @@
 package de.appdynamics.isdk.lab.plugin;
 
+import com.appdynamics.apm.appagent.api.AgentDelegate;
 import com.appdynamics.instrumentation.sdk.Rule;
 import com.appdynamics.instrumentation.sdk.SDKClassMatchType;
 import com.appdynamics.instrumentation.sdk.SDKStringMatchType;
@@ -31,6 +32,8 @@ public class BTDetectPlugin extends AEntry {
     public String getBusinessTransactionName(Object invokedObject, String className, String methodName, Object[] paramValues, ISDKUserContext context) throws ReflectorException {
         String name = method_getBTName.execute(invokedObject.getClass().getClassLoader(),invokedObject);
 
+
+
         return "CJob."+name;
     }
 
@@ -46,6 +49,7 @@ public class BTDetectPlugin extends AEntry {
 
     @Override
     public List<Rule> initializeRules() {
+
 
         List<Rule> rules = new ArrayList<Rule>();
 
