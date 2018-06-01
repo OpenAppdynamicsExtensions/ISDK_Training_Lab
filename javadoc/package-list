@@ -1,0 +1,7 @@
+com.appdynamics.apm.appagent.api
+com.appdynamics.apm.appagent.api.debug
+com.appdynamics.instrumentation.sdk
+com.appdynamics.instrumentation.sdk.contexts
+com.appdynamics.instrumentation.sdk.logging
+com.appdynamics.instrumentation.sdk.template
+com.appdynamics.instrumentation.sdk.toolbox.reflection

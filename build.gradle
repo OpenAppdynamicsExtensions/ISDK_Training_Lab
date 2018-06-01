@@ -27,19 +27,24 @@ jar {
 /**
  * Reuses the Ant signjar task to sign the target jar
  */
-//task signjar(dependsOn: jar)  {
-//    doLast {
-//        ant.signjar(keystore: "$sigKeystore",
-//                storepass: "$sigKsPasswd",
-//                jar: "${buildDir}/libs/${project.name}.jar",
-//                alias: "$sigKeyAlias",
-//                keypass: "$sigKeyPassword",
-//                verbose: "true")
-//    }
-//}
+task signedjar(dependsOn: jar)  {
+    doLast {
+        ant.signjar(keystore: "$sigKeystore",
+                storepass: "$sigKsPasswd",
+                jar: "${buildDir}/libs/${project.name}.jar",
+                alias: "$sigKeyAlias",
+                keypass: "$sigKeyPassword",
+                verbose: "true")
+    }
+}
 
-
-assemble.dependsOn(signjar)
+task initKeystore() {
+    doLast {
+       ""
+    }
+}
+// Enable this to enable signing as default
+//assemble.dependsOn(signjar)
 
 
 compileJava {
@@ -47,6 +52,8 @@ compileJava {
     targetCompatibility = 1.6
     // options.bootClasspath = "/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"
 }
+
+
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
