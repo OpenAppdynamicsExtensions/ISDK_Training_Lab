@@ -26,23 +26,23 @@ jar {
 
 /**
  * Reuses the Ant signjar task to sign the target jar
+ *
+ * Please create your Keystore to create
+ *        "keytool -genkey -alias $sigKeyAlias -storepass $sigKsPasswd -keystore $sigKeystore"
+ *
  */
 task signedjar(dependsOn: jar)  {
     doLast {
         ant.signjar(keystore: "$sigKeystore",
                 storepass: "$sigKsPasswd",
-                jar: "${buildDir}/libs/${project.name}.jar",
+                jar: "${buildDir}/lgit stibs/${project.name}.jar",
                 alias: "$sigKeyAlias",
                 keypass: "$sigKeyPassword",
                 verbose: "true")
     }
 }
 
-task initKeystore() {
-    doLast {
-       ""
-    }
-}
+
 // Enable this to enable signing as default
 //assemble.dependsOn(signjar)
 
